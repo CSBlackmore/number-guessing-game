@@ -1,11 +1,12 @@
 # Number Guessing Game (CLI)
 
-A simple command-line game built in Java where the user tries to guess a randomly generated number.
+A Command Line Interface (CLI) implementation of the classic number guessing game, built with a focus on Object-Oriented Programming (OOP) principles and clean code practices.
 
 ## Features
-- Random number generation
+- Separated logic into specialized methods to ensure maintainability.
 - User input handling
 - Feedback on guesses
 
 ## Tech Stack
-- Java
+- Java 17
+- Java standard library
