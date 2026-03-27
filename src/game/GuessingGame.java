@@ -25,7 +25,12 @@ public class GuessingGame {
         setUpPlayer();
     }
     public void setUpPlayer() {
-        // greets and gets user's name
+        System.out.println("Welcome! What's your name?");
+        playerName = userInput.nextLine();
+        System.out.println("Well, " + playerName + ". The rules are simple: \n" +
+                "There is a secret number between 1 to 100 and you should guess it.\n" +
+                "You will have " + MAX_ATTEMPTS + " chances and some hints will be provided.\n" +
+                "Here we go!");
     }
     public int askForNumber() {
         // asks and reads the scanner
@@ -38,6 +43,6 @@ public class GuessingGame {
         return true; // temporary
     }
     public void displayResults(boolean won) {
-        
+
     }
 }
