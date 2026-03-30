@@ -23,6 +23,8 @@ public class GuessingGame {
     public void playGame() {
         // the loop and number of attempts go here
         setUpPlayer();
+        
+        askForNumber();
     }
     public void setUpPlayer() {
         System.out.println("Welcome! What's your name?");
@@ -33,8 +35,10 @@ public class GuessingGame {
                 "Here we go!");
     }
     public int askForNumber() {
-        // asks and reads the scanner
-        return 0; // temporary
+        System.out.println("The secret number is ready!\n" +
+                "Now, please, enter your guess:");
+        int userGuess = userInput.nextInt();
+        return userGuess;
     }
     public boolean compareGuess(int userGuess) {
         // compares the user's guess to the secret number
