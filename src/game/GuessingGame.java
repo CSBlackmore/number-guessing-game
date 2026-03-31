@@ -1,4 +1,5 @@
 package game;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -52,8 +53,20 @@ public class GuessingGame {
     }
 
     public int askForNumber() {
-        System.out.println("Now, please, enter your guess:");
-        return userInput.nextInt();
+        int number = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.println("Now, please, enter your guess:");
+                number = userInput.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                String wrongInput = userInput.next();
+                System.out.println("ERROR: '" + wrongInput + "' is not an integer!");
+            }
+        }
+        return number;
     }
 
     public boolean compareGuess(int userGuess) {
