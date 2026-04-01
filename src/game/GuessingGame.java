@@ -60,7 +60,12 @@ public class GuessingGame {
             try {
                 System.out.println("Now, please, enter your guess:");
                 number = userInput.nextInt();
-                validInput = true;
+                if (number < MIN_NUMBER || number > MAX_NUMBER) {
+                    System.out.println("ERROR: The number " + number + " is out of range.\n" +
+                            "Remember that you must enter a number between " +MIN_NUMBER + " and " + MAX_NUMBER);
+                } else {
+                    validInput = true;
+                }
             } catch (InputMismatchException e) {
                 String wrongInput = userInput.next();
                 System.out.println("ERROR: '" + wrongInput + "' is not an integer!");
