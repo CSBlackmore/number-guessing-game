@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class GuessingGame {
 
-    private Scanner userInput;
-    private Random randomizer;
-    private int secretNumer;
+    private final Scanner userInput;
+    private final Random randomizer;
+    private int secretNumber;
     private int remainingAttempts;
     private String playerName;
 
@@ -19,7 +19,7 @@ public class GuessingGame {
     public GuessingGame() {
         this.userInput = new Scanner(System.in);
         this.randomizer = new Random();
-        this.secretNumer = randomizer.nextInt(MAX_NUMBER - MIN_NUMBER +1) + MIN_NUMBER;
+        this.secretNumber = randomizer.nextInt(MAX_NUMBER - MIN_NUMBER +1) + MIN_NUMBER;
         this.remainingAttempts = MAX_ATTEMPTS;
         this.playerName = "";
     }
@@ -30,12 +30,15 @@ public class GuessingGame {
         boolean userWins = false;
         while (remainingAttempts > 0) {
             int guess = askForNumber();
-            if (compareGuess(guess)) {
+            if (guess == secretNumber) {
                 userWins = true;
                 break;
             } else {
                 remainingAttempts--;
-                System.out.println("Remaining attempts: " + remainingAttempts);
+                if (remainingAttempts > 0) {
+                    compareGuess(guess);
+                    System.out.println("Remaining attempts: " + remainingAttempts);
+                }
             }
         }
         displayResults(userWins);
@@ -60,7 +63,6 @@ public class GuessingGame {
             try {
                 System.out.println("Now, please, enter your guess:");
                 number = userInput.nextInt();
-                // checks if the value entered is in range
                 if (number < MIN_NUMBER || number > MAX_NUMBER) {
                     System.out.println("ERROR: The number " + number + " is out of range.\n" +
                             "Remember that you must enter a number between " +MIN_NUMBER + " and " + MAX_NUMBER);
@@ -77,21 +79,21 @@ public class GuessingGame {
 
     public boolean compareGuess(int userGuess) {
         // prints hints
-        if (userGuess > secretNumer) {
+        if (userGuess > secretNumber) {
             System.out.println("Oops! It's lower.");
         }
-        else if (userGuess < secretNumer){
+        else if (userGuess < secretNumber){
             System.out.println("Oops! It's higher.");
         }
         // compares the user's guess to the secret number
-        return userGuess == secretNumer;
+        return userGuess == secretNumber;
     }
 
     public void displayResults(boolean won) {
         if (won) {
             System.out.println("Congratulations, " + playerName + "! You win.");
         } else {
-            System.out.println("Sorry! The secret number was: " + secretNumer + "\nBetter luck next time!");
+            System.out.println("Sorry! The secret number was: " + secretNumber + "\nBetter luck next time!");
         }
     }
 }
