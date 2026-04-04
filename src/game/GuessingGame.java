@@ -52,6 +52,16 @@ public class GuessingGame {
     public void setUpPlayer() {
         System.out.println("Welcome! What's your name?");
         playerName = userInput.nextLine();
+        while (playerName.isEmpty() || playerName.length() > 50) {
+            System.out.println("Non-acceptable input.");
+            if (playerName.isEmpty()) {
+                System.out.println("An empty field is not valid. Please, enter your name:");
+            }
+            else {
+                System.out.println("The name entered is too long. Please enter a valid name:");
+            }
+            playerName = userInput.nextLine();
+        }
         System.out.println("Well, " + playerName + ". The rules are simple: \n" +
                 "There is a secret number between " + MIN_NUMBER + " and " + MAX_NUMBER + ". You should guess it.\n" +
                 "You will have " + MAX_ATTEMPTS + " chances and some hints will be provided.\n" +
