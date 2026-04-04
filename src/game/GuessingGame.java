@@ -25,7 +25,6 @@ public class GuessingGame {
     }
 
     public void playGame() {
-        // the loop and number of attempts
         setUpPlayer();
         do {
             boolean userWins = false;
@@ -91,7 +90,6 @@ public class GuessingGame {
     }
 
     public void compareGuess(int userGuess) {
-        // prints hints
         if (userGuess > secretNumber) {
             System.out.println("Oops! It's lower.");
         }
