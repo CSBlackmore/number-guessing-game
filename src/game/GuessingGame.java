@@ -43,7 +43,6 @@ public class GuessingGame {
         }
         displayResults(userWins);
         userInput.close();
-        System.out.println("--- End of the game ---");
     }
 
     public void setUpPlayer() {
@@ -95,5 +94,30 @@ public class GuessingGame {
         } else {
             System.out.println("Sorry! The secret number was: " + secretNumber + "\nBetter luck next time!");
         }
+    }
+
+    public boolean askToReplay () {
+        userInput.nextLine();
+
+        char play = 'y';
+        char stop = 'n';
+        boolean playAgain = true;
+
+        while (playAgain) {
+            System.out.println("Would you like to play again?\n'y' = Yes, 'n' = No");
+            String replay = userInput.nextLine().toLowerCase();
+
+            if (replay.isEmpty()) {
+                System.out.println("ERROR! Please enter either 'y' or 'n'");
+            } else if (replay.charAt(0) != play && replay.charAt(0) != stop) {
+                System.out.println("ERROR! Please enter either 'y' or 'n' only");
+            } else if (replay.charAt(0) == play) {
+                return playAgain;
+            } else if (replay.charAt(0) == stop) {
+                System.out.println("Thank you for playing!\n==== End of the Game ====");
+                playAgain = false;
+            }
+        }
+        return playAgain;
     }
 }
