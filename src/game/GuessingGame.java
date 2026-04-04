@@ -27,21 +27,25 @@ public class GuessingGame {
     public void playGame() {
         // the loop and number of attempts
         setUpPlayer();
-        boolean userWins = false;
-        while (remainingAttempts > 0) {
-            int guess = askForNumber();
-            if (guess == secretNumber) {
-                userWins = true;
-                break;
-            } else {
-                remainingAttempts--;
-                if (remainingAttempts > 0) {
-                    compareGuess(guess);
-                    System.out.println("Remaining attempts: " + remainingAttempts);
+        do {
+            boolean userWins = false;
+            while (remainingAttempts > 0) {
+                int guess = askForNumber();
+                if (guess == secretNumber) {
+                    userWins = true;
+                    break;
+                } else {
+                    remainingAttempts--;
+                    if (remainingAttempts > 0) {
+                        compareGuess(guess);
+                        System.out.println("Remaining attempts: " + remainingAttempts);
+                    }
                 }
             }
-        }
-        displayResults(userWins);
+            displayResults(userWins);
+            remainingAttempts = MAX_ATTEMPTS;
+            secretNumber = randomizer.nextInt(MAX_NUMBER - MIN_NUMBER +1) + MIN_NUMBER;
+        } while (askToReplay());
         userInput.close();
     }
 
@@ -76,7 +80,7 @@ public class GuessingGame {
         return number;
     }
 
-    public boolean compareGuess(int userGuess) {
+    public void compareGuess(int userGuess) {
         // prints hints
         if (userGuess > secretNumber) {
             System.out.println("Oops! It's lower.");
@@ -84,8 +88,6 @@ public class GuessingGame {
         else if (userGuess < secretNumber){
             System.out.println("Oops! It's higher.");
         }
-        // compares the user's guess to the secret number
-        return userGuess == secretNumber;
     }
 
     public void displayResults(boolean won) {
@@ -112,9 +114,10 @@ public class GuessingGame {
             } else if (replay.charAt(0) != play && replay.charAt(0) != stop) {
                 System.out.println("ERROR! Please enter either 'y' or 'n' only");
             } else if (replay.charAt(0) == play) {
+                System.out.println("Here we go again!");
                 return playAgain;
             } else if (replay.charAt(0) == stop) {
-                System.out.println("Thank you for playing!\n==== End of the Game ====");
+                System.out.println("Thank you for playing!\n=== End of the Game ===");
                 playAgain = false;
             }
         }
