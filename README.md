@@ -1,92 +1,32 @@
-# 🎯 Guessing Game - Java CLI
+# Number Guessing Game - Java CLI Implementation
 
-A simple command-line number guessing game developed in **Java 17**.
-This project focuses on applying core backend fundamentals such as input validation, exception handling, and separation of responsibilities using an object-oriented approach.
+A command-line interface (CLI) application developed in Java 17 that demonstrates core backend fundamentals, specifically focusing on input validation, robust exception handling, and the separation of concerns through Object-Oriented Programming (OOP).
 
----
+## Core Features
 
-## ✨ Features
+- **Dynamic Game Logic:** Generates a random integer within a defined range (1-100) and provides real-time feedback (higher/lower) based on user attempts.
+- **Robust Error Handling:** Utilizes `InputMismatchException` and custom validation checks to ensure application stability against invalid user inputs (e.g., non-numeric strings, empty inputs).
+- **Session Management:** Includes a replay system that resets the game state, secret number, and attempt counters without requiring an application restart.
+- **Input Buffer Optimization:** Precise management of the `Scanner` buffer to handle transitions between numeric and string inputs effectively.
 
-* 🧠 **Interactive Game Logic**
-  The system generates a random number between 1 and 100 and provides dynamic hints ("higher" / "lower") based on user input.
+## Architecture and Design
 
-* 🛡️ **Input Validation & Error Handling**
-  User input is validated using exception handling (`InputMismatchException`) and additional checks (e.g., empty input, excessive length), ensuring the application remains stable under invalid input scenarios.
+The project follows a modular structure to promote maintainability:
+- **Main:** Application entry point and flow coordination.
+- **Game Engine:** Core logic, random number generation, and state tracking.
+- **Input Handler:** Dedicated logic for data sanitization and validation.
 
-* 🔄 **Replay System**
-  Players can restart the game without restarting the application. Each session resets the secret number and attempt counter.
+## Technical Specifications
 
-* ⚙️ **Controlled Input Flow**
-  Proper handling of `Scanner` input buffer when switching between numeric and string inputs to prevent common input issues.
+- **Language:** Java 17
+- **Standard Libraries used:** `java.util.Scanner`, `java.util.Random`, `java.util.InputMismatchException`.
 
----
+## Learning Objectives Achieved
 
-## 🏗️ Project Structure
+- Implementation of control flow and conditional logic.
+- Mastery of Java Exception Handling.
+- Application of Object-Oriented Design principles (Separation of Concerns).
+- CLI-based User Experience (UX) design.
 
-The project is organized to separate concerns and improve maintainability:
-
-* **Main**
-  Entry point of the application. Responsible for initializing and coordinating the game flow.
-
-* **Game**
-  Contains the core game logic, including number generation, attempt tracking, and win/lose conditions.
-
-* **Player (optional if implemented)**
-  Stores player-related data such as name and session state.
-
-* **InputHandler (or equivalent logic)**
-  Manages user input, validation, and error handling.
-
----
-
-## 🛠️ Technologies
-
-* **Language:** Java 17
-* **Standard Libraries:**
-
-    * `java.util.Scanner`
-    * `java.util.Random`
-    * `java.util.InputMismatchException`
-
----
-
-## 🚀 How to Run
-
-1. Compile the project:
-
-   ```
-   javac Main.java
-   ```
-
-2. Run the application:
-
-   ```
-   java Main
-   ```
-
----
-
-## 📌 Learning Goals
-
-This project was built to strengthen:
-
-* Control flow and conditional logic
-* Exception handling in Java
-* Input validation strategies
-* Basic object-oriented design and separation of responsibilities
-* CLI-based user interaction
-
----
-
-## 📈 Possible Improvements
-
-* Persist game history (file or database)
-* Add difficulty levels (e.g., different ranges or attempts)
-* Implement unit testing
-* Refactor into a more scalable architecture
-
----
-
-## 🤝 Author
-
-Developed as part of backend practice and preparation for junior developer roles.
+## Author
+Developed as part of professional Back-End development practice and portfolio building.
